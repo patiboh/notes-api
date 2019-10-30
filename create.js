@@ -1,6 +1,6 @@
-import uuid from "uuid";
-import * as dynamoDbLib from "./libs/dynamodb-lib";
-import { success, failure } from "./libs/response-lib";
+import uuid from 'uuid';
+import * as dynamoDbLib from './libs/dynamodb-lib';
+import {success, failure} from './libs/response-lib';
 
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
@@ -29,9 +29,9 @@ export async function main(event, context) {
   };
 
   try {
-    await dynamoDbLib.call("put", params);
+    await dynamoDbLib.call('put', params);
     return success(params.Item);
   } catch (error) {
-    return failure({ status: false });
+    return failure({status: false});
   }
 }
