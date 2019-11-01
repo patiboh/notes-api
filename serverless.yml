@@ -57,10 +57,10 @@ functions:
     handler: get.main
     events:
       - http:
-        path: notes/{id}
-        method: get
-        cors: true
-        authorizer: aws_iam
+          path: notes/{id}
+          method: get
+          cors: true
+          authorizer: aws_iam
   list:
     # Defines an HTTP API endpoint that calls the main function in list.js
     # - path: url path is /notes
@@ -68,10 +68,10 @@ functions:
     handler: list.main
     events:
       - http:
-        path: notes
-        method: get
-        cors: true
-        authorizer: aws_iam
+          path: notes
+          method: get
+          cors: true
+          authorizer: aws_iam
   update:
     # Defines an HTTP API endpoint that calls the main function in update.js
     # - path: url path is /notes/{id}
@@ -79,10 +79,10 @@ functions:
     handler: update.main
     events:
       - http:
-        path: notes/{id}
-        method: put
-        cors: true
-        authorizer: aws_iam
+          path: notes/{id}
+          method: put
+          cors: true
+          authorizer: aws_iam
   delete:
     # Defines an HTTP API endpoint that calls the main function in delete.js
     # - path: url path is /notes/{id}
@@ -90,10 +90,10 @@ functions:
     handler: delete.main
     events:
       - http:
-        path: notes/{id}
-        method: delete
-        cors: true
-        authorizer: aws_iam
+          path: notes/{id}
+          method: delete
+          cors: true
+          authorizer: aws_iam
   billing:
     # Defines an HTTP API endpoint that calls the main function in billing.js
     # - path: url path is /billing
@@ -101,10 +101,10 @@ functions:
     handler: billing.main
     events:
       - http:
-        path: billing
-        method: post
-        cors: true
-        authorizer: aws_iam
+          path: billing
+          method: post
+          cors: true
+          authorizer: aws_iam
 
 # Create our resources with separate CloudFormation templates
 resources:
