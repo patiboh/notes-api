@@ -14,11 +14,11 @@ provider:
   name: aws
   runtime: nodejs10.x
   stage: dev
-  region: ${env:AWS_REGION}
+  region: ${env:REGION}
 
   # Environment variables made available to our functions under process.env
   environment:
-    region: ${env:AWS_REGION}
+    region: ${env:REGION}
     tableName: ${env:TABLE_NAME}
     stripeSecretKey: ${env:STRIPE_SECRET_KEY}
 
