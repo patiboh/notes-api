@@ -1,8 +1,17 @@
-# Serverless Node.js Starter
+# Serverless API for Notes App
+
+Based on the [Serverless Stack](http://serverless-stack.com) guide.
+
+Original starter code & README can be found here: [Serverless Node.js Starter](https://github.com/AnomalyInnovations/serverless-nodejs-starter)
+
+---
 
 A Serverless starter that adds ES7 syntax, serverless-offline, linting, environment variables, and unit test support. Part of the [Serverless Stack](http://serverless-stack.com) guide.
 
-[Serverless Node.js Starter](https://github.com/AnomalyInnovations/serverless-nodejs-starter) uses the [serverless-bundle](https://github.com/AnomalyInnovations/serverless-bundle) plugin (an extension of the [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack) plugin) and the [serverless-offline](https://github.com/dherault/serverless-offline) plugin. It supports:
+It uses:
+the [serverless-bundle](https://github.com/AnomalyInnovations/serverless-bundle) plugin (an extension of the [serverless-webpack](https://github.com/serverless-heaven/serverless-webpack) plugin) and the [serverless-offline](https://github.com/dherault/serverless-offline) plugin.
+
+It supports:
 
 - **Generating optimized Lambda packages with Webpack**
 - **Use ES7 syntax in your handler functions**
@@ -20,34 +29,6 @@ A Serverless starter that adds ES7 syntax, serverless-offline, linting, environm
 
 ---
 
-### Demo
-
-A demo version of this service is hosted on AWS - [`https://z6pv80ao4l.execute-api.us-east-1.amazonaws.com/dev/hello`](https://z6pv80ao4l.execute-api.us-east-1.amazonaws.com/dev/hello)
-
-And here is the ES7 source behind it
-
-``` javascript
-export const hello = async (event, context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: `Go Serverless v1.0! ${(await message({ time: 1, copy: 'Your function executed successfully!'}))}`,
-      input: event,
-    }),
-  };
-};
-
-const message = ({ time, ...rest }) => new Promise((resolve, reject) =>
-  setTimeout(() => {
-    resolve(`${rest.copy} (with a delay)`);
-  }, time * 1000)
-);
-```
-
-### Upgrading from v1.x
-
-We have detailed instructions on how to upgrade your app to the v2.0 of the starter if you were using v1.x before. [Read about it here](https://github.com/AnomalyInnovations/serverless-nodejs-starter/releases/tag/v2.0).
-
 ### Requirements
 
 - [Install the Serverless Framework](https://serverless.com/framework/docs/providers/aws/guide/installation/)
@@ -57,19 +38,19 @@ We have detailed instructions on how to upgrade your app to the v2.0 of the star
 
 To create a new Serverless project.
 
-``` bash
+```bash
 $ serverless install --url https://github.com/AnomalyInnovations/serverless-nodejs-starter --name my-project
 ```
 
 Enter the new directory
 
-``` bash
+```bash
 $ cd my-project
 ```
 
 Install the Node.js packages
 
-``` bash
+```bash
 $ npm install
 ```
 
@@ -77,25 +58,25 @@ $ npm install
 
 To run a function on your local
 
-``` bash
+```bash
 $ serverless invoke local --function hello
 ```
 
 To simulate API Gateway locally using [serverless-offline](https://github.com/dherault/serverless-offline)
 
-``` bash
+```bash
 $ serverless offline start
 ```
 
 Deploy your project
 
-``` bash
+```bash
 $ serverless deploy
 ```
 
 Deploy a single function
 
-``` bash
+```bash
 $ serverless deploy function --function hello
 ```
 
@@ -103,7 +84,7 @@ $ serverless deploy function --function hello
 
 Run your tests using
 
-``` bash
+```bash
 $ npm test
 ```
 
@@ -124,19 +105,10 @@ We use [ESLint](https://eslint.org) to lint your code via the [serverless-bundle
 
 You can turn this off by adding the following to your `serverless.yml`.
 
-``` yaml
+```yaml
 custom:
   bundle:
     linting: false
 ```
 
 To [override the default config](https://eslint.org/docs/user-guide/configuring), add a `.eslintrc.json` file. To ignore ESLint for specific files, add it to a `.eslintignore` file.
-
-### Support
-
-- Open a [new issue](https://github.com/AnomalyInnovations/serverless-nodejs-starter/issues/new) if you've found a bug or have some suggestions.
-- Or submit a pull request!
-
----
-
-This repo is maintained by [Anomaly Innovations](https://anoma.ly); makers of [Seed](https://seed.run) and [Serverless Stack](https://serverless-stack.com).
