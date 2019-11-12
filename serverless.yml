@@ -32,7 +32,7 @@ provider:
         - dynamodb:Scan
         - dynamodb:GetItem
         - dynamodb:PutItem
-        - dynamodb:UdateItem
+        - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: 'arn:aws:dynamodb:eu-central-1:${env:AWS_ACCOUNT}:table/${env:TABLE_NAME}'
 
