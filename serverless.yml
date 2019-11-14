@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: notes-app-api
+service: qa-notes-app-api
 
 # Create an optimized package for our functions
 package:
@@ -13,7 +13,7 @@ plugins:
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: dev
+  stage: qa
   region: ${env:REGION}
 
   # Environment variables made available to our functions under process.env
@@ -34,7 +34,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: 'arn:aws:dynamodb:eu-central-1:${env:AWS_ACCOUNT}:table/${env:TABLE_NAME}'
+      Resource: "arn:aws:dynamodb:eu-central-1:${env:AWS_ACCOUNT}:table/${env:TABLE_NAME}"
 
 functions:
   create:
