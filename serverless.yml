@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: qa-notes-app-api
+service: notes-app-api
 
 # Create an optimized package for our functions
 package:
@@ -22,6 +22,7 @@ provider:
   runtime: nodejs10.x
   stage: qa
   region: ${env:REGION}
+  profile: dev # The default profile to use with this service
 
   # Environment variables made available to our functions under process.env
   environment:
