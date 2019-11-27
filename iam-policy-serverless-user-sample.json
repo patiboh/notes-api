@@ -1,0 +1,112 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:Describe*",
+        "cloudformation:List*",
+        "cloudformation:Get*",
+        "cloudformation:PreviewStackUpdate",
+        "cloudformation:CreateStack",
+        "cloudformation:UpdateStack",
+        "cloudformation:DeleteStack"
+      ],
+      "Resource": [
+        "arn:aws:cloudformation:${aws-region}:${aws-account}:stack/${service}*/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["cloudformation:ValidateTemplate"],
+      "Resource": ["*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:ListBucket",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:GetObject",
+        "s3:GetObjectAcl",
+        "s3:DeleteObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${serverlessdeploymentbucket}",
+        "arn:aws:s3:::${serverlessdeploymentbucket}/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["logs:DescribeLogGroups"],
+      "Resource": [
+        "arn:aws:logs:${aws-region}:${aws-account}:log-group::log-stream:*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:DeleteLogGroup",
+        "logs:DeleteLogStream",
+        "logs:DescribeLogStreams",
+        "logs:FilterLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:${aws-region}:${aws-account}:log-group:/aws/lambda/${service}*:log-stream:*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:GetRole",
+        "iam:PassRole",
+        "iam:CreateRole",
+        "iam:DeleteRole",
+        "iam:DetachRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:AttachRolePolicy",
+        "iam:DeleteRolePolicy"
+      ],
+      "Resource": ["arn:aws:iam::${aws-account}:role/${service}*-lambdaRole"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["apigateway:*"],
+      "Resource": [
+        "arn:aws:apigateway:${aws-region}::/restapis",
+        "arn:aws:apigateway:${aws-region}::/restapis/${apigateway-id}/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "lambda:GetFunction",
+        "lambda:CreateFunction",
+        "lambda:DeleteFunction",
+        "lambda:UpdateFunctionConfiguration",
+        "lambda:UpdateFunctionCode",
+        "lambda:ListVersionsByFunction",
+        "lambda:PublishVersion",
+        "lambda:CreateAlias",
+        "lambda:DeleteAlias",
+        "lambda:UpdateAlias",
+        "lambda:GetFunctionConfiguration",
+        "lambda:AddPermission",
+        "lambda:RemovePermission",
+        "lambda:InvokeFunction"
+      ],
+      "Resource": ["arn:aws:lambda:*:${aws-account}:function:${service}*"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeVpcs"
+      ],
+      "Resource": ["*"]
+    }
+  ]
+}
