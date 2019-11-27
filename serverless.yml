@@ -1,5 +1,5 @@
 # NOTE: update this with your service name
-service: notes-app-api
+service: notes
 
 # Create an optimized package for our functions
 package:
@@ -20,7 +20,7 @@ custom:
 provider:
   name: aws
   runtime: nodejs10.x
-  stage: qa
+  stage: dev
   region: ${env:REGION}
   profile: dev # The default profile to use with this service
 
