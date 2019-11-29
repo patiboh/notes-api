@@ -32,8 +32,14 @@
         "s3:DeleteObject"
       ],
       "Resource": [
-        "arn:aws:s3:::${serverlessdeploymentbucket}",
-        "arn:aws:s3:::${serverlessdeploymentbucket}/*"
+        "arn:aws:s3:::${service-dev-attachmentsbucket}",
+        "arn:aws:s3:::${service-dev-attachmentsbucket}/*",
+        "arn:aws:s3:::${service-prod-attachmentsbucket}",
+        "arn:aws:s3:::${service-prod-attachmentsbucket}/*",
+        "arn:aws:s3:::${service-dev-serverlessdeploymentbucket}",
+        "arn:aws:s3:::${service-dev-serverlessdeploymentbucket}/*",
+        "arn:aws:s3:::${service-prod-serverlessdeploymentbucket}",
+        "arn:aws:s3:::${service-prod-serverlessdeploymentbucket}/*"
       ]
     },
     {
@@ -76,7 +82,8 @@
       "Action": ["apigateway:*"],
       "Resource": [
         "arn:aws:apigateway:${aws-region}::/restapis",
-        "arn:aws:apigateway:${aws-region}::/restapis/${apigateway-id}/*"
+        "arn:aws:apigateway:${aws-region}::/restapis/${apigateway-id-dev}/*",
+        "arn:aws:apigateway:${aws-region}::/restapis/${apigateway-id-prod}/*"
       ]
     },
     {
