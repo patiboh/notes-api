@@ -1,0 +1,14 @@
+{
+  "name": "notes-api-billing",
+  "version": "1.0.0",
+  "description": "Billing API for Notes App",
+  "main": "handler.js",
+  "scripts": {
+    "test": "../../node_modules/.bin/serverless-bundle test"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "stripe": "^7.11.0"
+  }
+}
