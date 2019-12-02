@@ -1,5 +1,5 @@
 # Update this with your service name
-service: ${env:APP_NAME}-billing-api
+service: notes-billing-api
 
 # Create an optimized package for our functions
 package:
@@ -8,6 +8,7 @@ package:
 plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
+  - serverless-dotenv-plugin # Load .env as environment variables
 
 custom: ${file(../../serverless.common.yml):custom}
 
@@ -29,6 +30,7 @@ provider:
   environment:
     stage: ${self:custom.stage}
     resourcesStage: ${self:custom.resourcesStage}
+    stripeSecretKey: ${env:STRIPE_SECRET_KEY}
     notePurchasedTopicArn:
       Ref: NotePurchasedTopic
 

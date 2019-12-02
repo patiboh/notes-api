@@ -7,7 +7,7 @@ custom:
     dev: dev
   resourcesStage: ${self:custom.resourcesStages.${self:custom.stage}, self:custom.resourcesStages.dev}
 
-lambdaPoliciXRay:
+lambdaPolicyXRay:
   Effect: Allow
   Action:
     - xray:PutTraceSegments

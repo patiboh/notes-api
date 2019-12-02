@@ -1,5 +1,5 @@
 # Update this with your service name
-service: ${env:APP_NAME}-notes-api
+service: notes-notes-api
 
 # Create an optimized package for our functions
 package:
