@@ -1,4 +1,4 @@
-import AWS from '../notes-api/libs/aws-sdk';
+import AWS from '../../libs/aws-sdk';
 import config from '../../config';
 
 export async function main(event, context) {
