@@ -108,7 +108,7 @@ resources:
   # API Gateway Errors
   - ${file(resources/api-gateway-errors.yml)}
   # Cognito
-  - ${file(resources/cognito-user-pool.yml)}
+  - ${file(resources/cognito-policy.yml)}
 
   - Outputs:
       ApiGatewayRestApiId:
