@@ -1,0 +1,35 @@
+service: notes-app-ext-notify-job
+
+package:
+  individually: true
+
+plugins:
+  - serverless-bundle
+  - serverless-dotenv-plugin # Load .env as environment variables
+
+custom: ${file(../../serverless.common.yml):custom}
+
+provider:
+  name: aws
+  runtime: nodejs10.x
+  stage: dev
+  region: ${env:REGION}
+  environment:
+    stage: ${self:custom.stage}
+    resourcesStage: ${self:custom.resourcesStage}
+  tracing:
+    lambda: true
+
+  iamRoleStatements:
+    - ${file(../../serverless.common.yml):lambdaPolicyXRay}
+    - Effect: Allow
+      Action:
+        - sns:Publish
+      Resource: '*'
+
+functions:
+  notify:
+    handler: notify.main
+    events:
+      - sns:
+        'Fn::ImportValue': ExtNotePurchasedTopicArn-${self:custom.stage}

@@ -1,0 +1,11 @@
+{
+  "name": "notes-api-notify",
+  "version": "1.0.0",
+  "description": "Notify Job for Notes App",
+  "main": "notify.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
