@@ -30,7 +30,6 @@ provider:
   environment:
     stage: ${self:custom.stage}
     resourcesStage: ${self:custom.resourcesStage}
-    stripeSecretKey: ${env:STRIPE_SECRET_KEY}
     notePurchasedTopicArn:
       Ref: NotePurchasedTopic
 
