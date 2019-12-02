@@ -12,7 +12,7 @@ Resources:
             Resource:
               Fn::Join:
                 - ''
-                - - 'arn:aws:execute-api'
+                - - 'arn:aws:execute-api:'
                   - Ref: AWS::Region
                   - ':'
                   - Ref: AWS::AccountId
