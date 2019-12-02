@@ -42,7 +42,7 @@ provider:
         - dynamodb:DeleteItem
       # Restrict our IAM role permissions to the specific table for the stage
       Resource:
-        - 'Fn::ImportValue': ${self:custom.resourcesStage}-${env:APP_NAME}-TableArn
+        - 'Fn::ImportValue': ${env:APP_NAME}-${self:custom.resourcesStage}-TableArn
 
 functions:
   create:
@@ -115,7 +115,7 @@ resources:
         Value:
           Ref: ApiGatewayRestApi
         Export:
-          Name: ${self:custom.stage}-${env:APP_NAME}-ApiGatewayRestApiId
+          Name: ${env:APP_NAME}-${self:custom.stage}-ApiGatewayRestApiId
 
       ApiGatewayRestApiRootResourceId:
         Value:
@@ -123,4 +123,4 @@ resources:
             - ApiGatewayRestApi
             - RootResourceId
         Export:
-          Name: ${self:custom.stage}-${env:APP_NAME}-ApiGatewayRestApiRootResourceId
+          Name: ${env:APP_NAME}-${self:custom.stage}-ApiGatewayRestApiRootResourceId

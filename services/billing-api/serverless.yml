@@ -21,9 +21,9 @@ provider:
 
   apiGateway:
     restApiId:
-      'Fn::ImportValue': ${self:custom.stage}-${env:APP_NAME}-ApiGatewayRestApiId
+      'Fn::ImportValue': ${env:APP_NAME}-${self:custom.stage}-ApiGatewayRestApiId
     restApiRootResourceId:
-      'Fn::ImportValue': ${self:custom.stage}-${env:APP_NAME}-ApiGatewayRestApiRootResourceId
+      'Fn::ImportValue': ${env:APP_NAME}-${self:custom.stage}-ApiGatewayRestApiRootResourceId
 
   # Environment variables made available to our functions under process.env
   environment:
