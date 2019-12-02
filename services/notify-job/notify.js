@@ -1,4 +1,4 @@
-import AWS from '../../libs/aws-sdk';
+import AWS from '../notes-api/libs/aws-sdk';
 import config from '../../config';
 
 export async function main(event, context) {
@@ -9,7 +9,7 @@ export async function main(event, context) {
   await sns
     .publish({
       Message: `Charged ${amount} for ${description}`,
-      PhoneNumber: config.ADMIN_PHONE_NUMBER
+      PhoneNumber: config.adminPhoneNumber
     })
     .promise();
 
