@@ -16,6 +16,7 @@ provider:
   name: aws
   runtime: nodejs10.x
   stage: dev
+  apiname: ${self:custom.stage}-notes
   profile: lds-dev-admin
   region: ${env:REGION}
   tracing:
