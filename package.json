@@ -13,6 +13,7 @@
     "url": "https://github.com/patiboh/notes-api.git"
   },
   "dependencies": {
+    "aws-amplify-serverless-plugin": "^1.4.1",
     "aws-xray-sdk": "^2.3.6"
   },
   "devDependencies": {
