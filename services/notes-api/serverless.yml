@@ -42,7 +42,7 @@ provider:
         - dynamodb:DeleteItem
       # Restrict our IAM role permissions to the specific table for the stage
       Resource:
-        - 'Fn::ImportValue': notes-${self:custom.resourcesStage}-ExtNotesTableArn
+        - 'Fn::ImportValue': notes-${self:custom.resourcesStage}-NotesTableArn
 
 functions:
   create:
