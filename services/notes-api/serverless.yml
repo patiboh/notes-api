@@ -1,5 +1,5 @@
 # Update this with your service name
-service: notes-notes-api
+service: notes-api-notes
 
 # Create an optimized package for our functions
 package:

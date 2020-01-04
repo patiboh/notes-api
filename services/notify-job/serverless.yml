@@ -1,4 +1,4 @@
-service: notes-notify-job
+service: notes-api-notify
 
 package:
   individually: true
