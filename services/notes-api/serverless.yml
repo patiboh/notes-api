@@ -14,18 +14,19 @@ custom: ${file(../../serverless.common.yml):custom}
 
 provider:
   name: aws
+  profile: ${self:custom.profile.${self:custom.stage}}
   runtime: nodejs10.x
   stage: dev
-  profile: lds-dev-admin
   region: ${env:REGION}
   tracing:
     apiGateway: true
-    labmda: true
+    lambda: true
 
   # Environment variables made available to our functions under process.env
   environment:
     stage: ${self:custom.stage}
     resourcesStage: ${self:custom.resourcesStage}
+    MESSAGE: ${self:custom.environment.MESSAGE.${self:custom.stage}}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
