@@ -1,16 +1,16 @@
 # Update this with your service name
 service: notes-notes-api
 
-# Create an optimized package for our functions
-package:
-  individually: true
-
 plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
   - serverless-dotenv-plugin # Load .env as environment variables
 
 custom: ${file(../../serverless.common.yml):custom}
+
+# Create an optimized package for our functions
+package:
+  individually: true
 
 provider:
   name: aws
@@ -26,6 +26,7 @@ provider:
   environment:
     stage: ${self:custom.stage}
     resourcesStage: ${self:custom.resourcesStage}
+    tableName: ${self:custom.resourcesStage}-${env:TABLE_NAME}
     MESSAGE: ${self:custom.environment.MESSAGE.${self:custom.stage}}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
