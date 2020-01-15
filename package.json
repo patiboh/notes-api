@@ -16,7 +16,7 @@
     "aws-xray-sdk": "^2.3.6"
   },
   "devDependencies": {
-    "aws-sdk": "^2.559.0",
+    "aws-sdk": "^2.603.0",
     "jest": "^24.9.0",
     "serverless-bundle": "^1.2.5",
     "serverless-dotenv-plugin": "^2.1.1",
