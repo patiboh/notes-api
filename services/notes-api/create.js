@@ -1,6 +1,8 @@
 import uuid from 'uuid';
 import AWS from 'aws-sdk';
 
+import {success, failure} from '../../libs/response-lib';
+
 const dynamoDb = new AWS.DynamoDB.DocumentClient();
 
 export function main(event, context, callback) {
@@ -27,27 +29,11 @@ export function main(event, context, callback) {
   };
 
   dynamoDb.put(params, (error, data) => {
-    // Set response headers to enable CORS (Cross-Origin Resource Sharing)
-    const headers = {
-      'Access-Control-Allow-Origin': 'https://dev.notes.fat-fuzzy.rocks',
-      'Access-Control-Allow-Credentials': 'true'
-    };
     if (error) {
-      const response = {
-        statusCode: 500,
-        headers: headers,
-        body: JSON.stringify({status: false})
-      };
-      callback(null, response);
+      callback(failure({status: false}), null);
       return;
     }
 
-    // Return status code 200 and the newly created item
-    const response = {
-      statusCode: 200,
-      headers: headers,
-      body: JSON.stringify(params.Item)
-    };
-    callback(null, response);
+    callback(null, success(params.Item));
   });
 }

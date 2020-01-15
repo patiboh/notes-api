@@ -1,7 +1,13 @@
-import * as dynamoDbLib from '../../libs/dynamodb-lib';
+// import * as dynamoDbLib from '../../libs/dynamodb-lib';
 import {success, failure} from '../../libs/response-lib';
+import AWS from 'aws-sdk';
+AWS.config.update({
+  region: process.env.region
+});
 
-export async function main(event, context) {
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+export function main(event, context, callback) {
   const params = {
     TableName: process.env.tableName,
     /**
@@ -15,15 +21,21 @@ export async function main(event, context) {
     }
   };
 
-  try {
-    const result = await dynamoDbLib.call('get', params);
-    if (result.Item) {
-      // Return the retrieved item
-      return success(result.Item);
-    } else {
-      return failure({status: false, error: 'Item not found'});
+  dynamoDb.get(params, (error, data) => {
+    console.log('CALLBACK dynamoDb.get', data);
+    if (error) {
+      callback(failure({status: false}), null);
+      return;
     }
-  } catch (error) {
-    return failure({status: false});
-  }
+    console.log('SUCESS dynamoDb.get', data);
+    if (data.Item) {
+      // Return the retrieved item
+      console.log('Success ');
+
+      callback(null, success(data.Item));
+      return;
+    } else {
+      callback(failure({status: false, error: 'Item not found'}), null);
+    }
+  });
 }

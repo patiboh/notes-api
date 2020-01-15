@@ -1,7 +1,13 @@
-import * as dynamoDbLib from '../../libs/dynamodb-lib';
+// import * as dynamoDbLib from '../../libs/dynamodb-lib';
 import {success, failure} from '../../libs/response-lib';
+import AWS from 'aws-sdk';
+AWS.config.update({
+  region: process.env.region
+});
 
-export async function main(event, context) {
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+export function main(event, context, callback) {
   const params = {
     TableName: process.env.tableName,
 
@@ -15,10 +21,12 @@ export async function main(event, context) {
       noteId: event.pathParameters.id
     }
   };
-  try {
-    await dynamoDbLib.call('delete', params);
-    return success({status: true});
-  } catch (error) {
-    return failure({status: false});
-  }
+  dynamoDb.delete(params, (error, data) => {
+    if (error) {
+      callback(failure({status: false}), null);
+      return;
+    }
+
+    callback(null, success({status: true}));
+  });
 }
