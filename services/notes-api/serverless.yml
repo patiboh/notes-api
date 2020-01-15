@@ -58,7 +58,16 @@ functions:
       - http:
           path: notes
           method: post
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   get:
     # Defines an HTTP API endpoint that calls the main function in get.js
@@ -69,7 +78,16 @@ functions:
       - http:
           path: notes/{id}
           method: get
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   list:
     # Defines an HTTP API endpoint that calls the main function in list.js
@@ -80,7 +98,16 @@ functions:
       - http:
           path: notes
           method: get
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   update:
     # Defines an HTTP API endpoint that calls the main function in update.js
@@ -91,7 +118,16 @@ functions:
       - http:
           path: notes/{id}
           method: put
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   delete:
     # Defines an HTTP API endpoint that calls the main function in delete.js
@@ -102,7 +138,16 @@ functions:
       - http:
           path: notes/{id}
           method: delete
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
 
 # Create our resources with separate CloudFormation templates
