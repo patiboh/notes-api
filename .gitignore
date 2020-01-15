@@ -43,6 +43,7 @@ Session.vim
 # Serverless
 .webpack
 .serverless
+iam-policy-serverless-deployment.json
 
 # env
 env.yml

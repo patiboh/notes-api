@@ -1,7 +1,13 @@
-import * as dynamoDbLib from '../../libs/dynamodb-lib';
+// import * as dynamoDbLib from '../../libs/dynamodb-lib';
 import {success, failure} from '../../libs/response-lib';
+import AWS from 'aws-sdk';
+AWS.config.update({
+  region: process.env.region
+});
 
-export async function main(event, context) {
+const dynamoDb = new AWS.DynamoDB.DocumentClient();
+
+export function main(event, context, callback) {
   const data = JSON.parse(event.body);
   const params = {
     TableName: process.env.tableName,
@@ -33,13 +39,12 @@ export async function main(event, context) {
      */
     ReturnValues: 'ALL_NEW'
   };
+  dynamoDb.update(params, (error, data) => {
+    if (error) {
+      callback(failure({status: false}), null);
+      return;
+    }
 
-  try {
-    await dynamoDbLib.call('update', params);
-    return success({status: true});
-  } catch (error) {
-    console.log(error);
-
-    return failure({status: false});
-  }
+    callback(null, success({status: true}));
+  });
 }

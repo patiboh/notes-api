@@ -1,6 +1,5 @@
 const stage = process.env.stage;
 const resourcesStage = process.env.resourcesStage;
-const adminPhoneNumber = process.env.adminPhoneNumber;
 
 const stageConfigs = {
   dev: {
@@ -16,6 +15,5 @@ const config = stageConfigs[stage] || stageConfigs.dev;
 export default {
   stage,
   resourcesStage,
-  adminPhoneNumber,
   ...config
 };

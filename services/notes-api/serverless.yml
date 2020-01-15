@@ -1,10 +1,6 @@
 # Update this with your service name
 service: notes-notes-api
 
-# Create an optimized package for our functions
-package:
-  individually: true
-
 plugins:
   - serverless-bundle # Package our functions with Webpack
   - serverless-offline
@@ -12,20 +8,26 @@ plugins:
 
 custom: ${file(../../serverless.common.yml):custom}
 
+# Create an optimized package for our functions
+package:
+  individually: true
+
 provider:
   name: aws
+  profile: ${self:custom.profile.${self:custom.stage}}
   runtime: nodejs10.x
   stage: dev
-  profile: lds-dev-admin
   region: ${env:REGION}
   tracing:
     apiGateway: true
-    labmda: true
+    lambda: true
 
   # Environment variables made available to our functions under process.env
   environment:
     stage: ${self:custom.stage}
     resourcesStage: ${self:custom.resourcesStage}
+    tableName: ${self:custom.resourcesStage}-${env:TABLE_NAME}
+    MESSAGE: ${self:custom.environment.MESSAGE.${self:custom.stage}}
 
   # 'iamRoleStatements' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
@@ -56,7 +58,16 @@ functions:
       - http:
           path: notes
           method: post
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   get:
     # Defines an HTTP API endpoint that calls the main function in get.js
@@ -67,7 +78,16 @@ functions:
       - http:
           path: notes/{id}
           method: get
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   list:
     # Defines an HTTP API endpoint that calls the main function in list.js
@@ -78,7 +98,16 @@ functions:
       - http:
           path: notes
           method: get
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   update:
     # Defines an HTTP API endpoint that calls the main function in update.js
@@ -89,7 +118,16 @@ functions:
       - http:
           path: notes/{id}
           method: put
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
   delete:
     # Defines an HTTP API endpoint that calls the main function in delete.js
@@ -100,7 +138,16 @@ functions:
       - http:
           path: notes/{id}
           method: delete
-          cors: true
+          cors:
+            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
 
 # Create our resources with separate CloudFormation templates

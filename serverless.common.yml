@@ -2,6 +2,13 @@ custom:
   # Our stage is based on what is passed in when running serverless commands,
   # or falls back to what we have set in the provider section
   stage: ${opt:stage, self:provider.stage}
+  profile:
+    prod: lds-prod-admin
+    dev: lds-dev-admin
+  environment:
+    MESSAGE:
+      prod: '- Environment: prod'
+      dev: '- Environment: dev'
   resourcesStages:
     prod: prod
     dev: dev
