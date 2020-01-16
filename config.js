@@ -4,11 +4,11 @@ const resourcesStage = process.env.resourcesStage;
 const stageConfigs = {
   dev: {
     stripeKeyName: '/stripeSecretKey/test',
-    adminPhone: '/adminPhone/test'
+    adminPhoneNumber: '/adminPhone/test'
   },
   prod: {
     stripeKeyName: '/stripeSecretKey/live',
-    adminPhone: '/adminPhone/live'
+    adminPhoneNumber: '/adminPhone/live'
   }
 };
 
