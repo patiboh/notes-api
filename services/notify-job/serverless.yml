@@ -18,7 +18,6 @@ provider:
   environment:
     stage: ${self:custom.stage}
     resourcesStage: ${self:custom.resourcesStage}
-    adminPhoneNumber: ${env:ADMIN_PHONE_NUMBER}
   tracing:
     lambda: true
 

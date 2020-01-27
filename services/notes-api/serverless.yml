@@ -59,7 +59,7 @@ functions:
           path: notes
           method: post
           cors:
-            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            origin: '${env:ORIGIN}'
             headers:
               - Access-Control-Allow-Origin
               - Content-Type
@@ -79,7 +79,7 @@ functions:
           path: notes/{id}
           method: get
           cors:
-            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            origin: '${env:ORIGIN}'
             headers:
               - Access-Control-Allow-Origin
               - Content-Type
@@ -99,7 +99,7 @@ functions:
           path: notes
           method: get
           cors:
-            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            origin: '${env:ORIGIN}'
             headers:
               - Access-Control-Allow-Origin
               - Content-Type
@@ -119,7 +119,7 @@ functions:
           path: notes/{id}
           method: put
           cors:
-            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            origin: '${env:ORIGIN}'
             headers:
               - Access-Control-Allow-Origin
               - Content-Type
@@ -139,7 +139,7 @@ functions:
           path: notes/{id}
           method: delete
           cors:
-            origin: 'https://dev.notes.fat-fuzzy.rocks'
+            origin: '${env:ORIGIN}'
             headers:
               - Access-Control-Allow-Origin
               - Content-Type

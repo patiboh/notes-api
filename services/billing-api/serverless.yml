@@ -65,7 +65,16 @@ functions:
       - http:
           path: billing
           method: post
-          cors: true
+          cors:
+            origin: '${env:ORIGIN}'
+            headers:
+              - Access-Control-Allow-Origin
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+            allowCredentials: true
           authorizer: aws_iam
 
 # Create our resources with separate CloudFormation templates
